@@ -3,6 +3,44 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
+
+//Calculates a random number between 0 and the max number of objects in the "quotes" array
+let getRandomQuote = arr => {
+  let randomQuote = Math.floor(Math.random() * arr.length);
+  return quotes[randomQuote];
+ }
+ 
+ 
+ //Calls a random Object from the "quotes" array and parses the information into the proper HTML sections
+ let printQuote = () => {
+   let randomQuote = getRandomQuote(quotes);
+   let html = `
+   <p class="quote">${randomQuote.quote}</p>
+   <p class="source">${randomQuote.source}
+   `;
+   if (randomQuote.citation !== '') {
+     html +=`
+       <span class="citation">${randomQuote.citation}</span>
+       `;
+   }
+   if (randomQuote.year !== '') {
+     html += `
+       <span class="year">${randomQuote.year}</span>
+       `;
+   }
+   html += `<p>`;
+   document.getElementById('quote-box').innerHTML = html;
+ }
+ 
+
+let randomValue = () => Math.floor(Math.random() * 256);
+
+
+const randomRGB = (value) => {
+  const color = `rgb( ${value(randomValue)}, ${value(randomValue)}, ${value(randomValue)} )`;
+  return color;
+}
+
 //Array of quotes - properties include "quote", "source", "citation" and "year"
 let quotes = [
   {
@@ -98,34 +136,9 @@ let quotes = [
   ];
 
 
-//Calculates a random number between 0 and the max number of objects in the "quotes" array
-let getRandomQuote = arr => {
- let randomQuote = Math.floor(Math.random() * arr.length);
- return quotes[randomQuote];
-}
-
-
-//Calls a random Object from the "quotes" array and parses the information into the proper HTML sections
-let printQuote = () => {
-  let randomQuote = getRandomQuote(quotes);
-  let html = `
-  <p class="quote">${randomQuote.quote}</p>
-  <p class="source">${randomQuote.source}
-  `;
-  if (randomQuote.citation !== '') {
-    html +=`
-      <span class="citation">${randomQuote.citation}</span>
-      `;
-  }
-  if (randomQuote.year !== '') {
-    html += `
-      <span class="year">${randomQuote.year}</span>
-      `;
-  }
-  html += `<p>`;
-  document.getElementById('quote-box').innerHTML = html;
-}
-
-
 //Listens for a click on the button and then loads the "printQuote" function when pressed
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// console.log(randomRGB(randomValue));
+
+//researched code for changing background style and found this snippet here --> https://www.codegrepper.com/code-examples/javascript/how+to+change+background+color+of+html+element+in+javascript
+document.body.style.backgroundColor = `${randomRGB(randomValue)}`;
