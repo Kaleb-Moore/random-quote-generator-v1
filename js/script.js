@@ -104,28 +104,6 @@ let quotes = [
   },
   ];
 
-// let test = '';
-
-// for ( let i = 0; i < quotes.length; i++) {
-//   test += 
-//   `
-//   Name: ${quotes[i].source}
-//   Quote: ${quotes[i].quote}
-//   `;
-
-//   if (quotes[i].citation !== '') {
-//     test += `Citation: ${quotes[i].citation}
-//   `;
-//   }
-
-//   if (quotes[i].year !== '') {
-//     test += `Year: ${quotes[i].year}
-//   `;
-//   }
-
-// }
-
-// console.log(test);
 
 /***
  * `getRandomQuote` function
@@ -133,9 +111,14 @@ let quotes = [
 
 let getRandomQuote = arr => {
  let randomQuote = Math.floor((Math.random() * arr.length) + 1);
+
+ console.log(randomQuote);
+ console.log(arr[randomQuote]);
+
  return quotes[randomQuote];
 }
-console.log(getRandomQuote(quotes));
+
+getRandomQuote(quotes);
 
 /***
  * `printQuote` function
