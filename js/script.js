@@ -104,6 +104,29 @@ let quotes = [
   },
   ];
 
+let test = '';
+
+for ( let i = 0; i < quotes.length; i++) {
+  test += 
+  `
+  Name: ${quotes[i].source}
+  Quote: ${quotes[i].quote}
+  `;
+
+  if (quotes[i].year !== '') {
+    test += `Year: ${quotes[i].year}
+    `;
+  }
+
+  if (quotes[i].citation !== '') {
+    test += `Citation: ${quotes[i].citation}
+    `;
+  }
+  
+}
+
+console.log(test);
+
 /***
  * `getRandomQuote` function
 ***/
@@ -121,4 +144,4 @@ let quotes = [
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, false);
