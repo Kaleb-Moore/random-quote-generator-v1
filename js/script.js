@@ -3,14 +3,7 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
-
+//Array of quotes - properties include "quote", "source", "citation" and "year"
 let quotes = [
   {
     quote: 'If you always do what you’ve always done, you always get what you’ve always gotten.',
@@ -105,48 +98,34 @@ let quotes = [
   ];
 
 
-/***
- * `getRandomQuote` function
-***/
-
+//Calculates a random number between 0 and the max number of objects in the "quotes" array
 let getRandomQuote = arr => {
  let randomQuote = Math.floor(Math.random() * arr.length);
  return quotes[randomQuote];
 }
 
-/***
- * `printQuote` function
-***/
 
+//Calls a random Object from the "quotes" array and parses the information into the proper HTML sections
 let printQuote = () => {
   let randomQuote = getRandomQuote(quotes);
   let html = `
   <p class="quote">${randomQuote.quote}</p>
   <p class="source">${randomQuote.source}
   `;
-
   if (randomQuote.citation !== '') {
     html +=`
       <span class="citation">${randomQuote.citation}</span>
       `;
   }
-
   if (randomQuote.year !== '') {
     html += `
       <span class="year">${randomQuote.year}</span>
       `;
   }
-
   html += `<p>`;
-
   document.getElementById('quote-box').innerHTML = html;
 }
 
-printQuote();
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
-
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//Listens for a click on the button and then loads the "printQuote" function when pressed
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
