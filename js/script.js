@@ -110,7 +110,7 @@ let quotes = [
 ***/
 
 let getRandomQuote = arr => {
- let randomQuote = Math.floor((Math.random() * arr.length) + 1);
+ let randomQuote = Math.floor(Math.random() * arr.length);
  return quotes[randomQuote];
 }
 
@@ -120,8 +120,26 @@ let getRandomQuote = arr => {
 
 let printQuote = () => {
   let randomQuote = getRandomQuote(quotes);
-  let html = `${randomQuote.quote}`;
-  document.querySelector('#quote').innerHTML = html;  
+  let html = `
+  <p class="quote">${randomQuote.quote}</p>
+  <p class="source">${randomQuote.source}
+  `;
+
+  if (randomQuote.citation !== '') {
+    html +=`
+      <span class="citation">${randomQuote.citation}</span>
+      `;
+  }
+
+  if (randomQuote.year !== '') {
+    html += `
+      <span class="year">${randomQuote.year}</span>
+      `;
+  }
+
+  html += `<p>`;
+
+  document.getElementById('quote-box').innerHTML = html;
 }
 
 printQuote();
