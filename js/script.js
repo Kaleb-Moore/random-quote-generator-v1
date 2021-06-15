@@ -113,16 +113,16 @@ for ( let i = 0; i < quotes.length; i++) {
   Quote: ${quotes[i].quote}
   `;
 
-  if (quotes[i].year !== '') {
-    test += `Year: ${quotes[i].year}
-    `;
-  }
-
   if (quotes[i].citation !== '') {
     test += `Citation: ${quotes[i].citation}
-    `;
+  `;
   }
-  
+
+  if (quotes[i].year !== '') {
+    test += `Year: ${quotes[i].year}
+  `;
+  }
+
 }
 
 console.log(test);
