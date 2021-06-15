@@ -111,20 +111,20 @@ let quotes = [
 
 let getRandomQuote = arr => {
  let randomQuote = Math.floor((Math.random() * arr.length) + 1);
-
- console.log(randomQuote);
- console.log(arr[randomQuote]);
-
  return quotes[randomQuote];
 }
-
-getRandomQuote(quotes);
 
 /***
  * `printQuote` function
 ***/
 
+let printQuote = () => {
+  let randomQuote = getRandomQuote(quotes);
+  let html = `${randomQuote.quote}`;
+  document.querySelector('#quote').innerHTML = html;  
+}
 
+printQuote();
 
 /***
  * click event listener for the print quote button
